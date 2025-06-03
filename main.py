@@ -127,13 +127,13 @@ elif selection == "Predict Cancer":
 
         # Predictions
         presence = predictor.predict(presence_input)[0]
-        
+
         stage = stage_model.predict(risk_stage_input)[0]
 
-        risk_score = risk_model.predict(risk_stage_input)[0]
-        # min_y, max_y = 0, 100
-        # risk_score = 100 * (risk_pred - min_y) / (max_y - min_y)
-        # risk_score = np.clip(risk_score, 0, 100)
+        risk_pred = risk_model.predict(risk_stage_input)[0]
+        min_y, max_y = 0, 200
+        risk_score = 100 * (risk_pred - min_y) / (max_y - min_y)
+        risk_score = np.clip(risk_score, 0, 100)
 
         
 
