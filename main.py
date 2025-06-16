@@ -11,9 +11,17 @@ def load_lottie(filepath):
         return json.load(f)
 
 # Load models
-predictor = joblib.load('./Models/predictor.pkl')
-risk_model = joblib.load('./Models/risk.pkl')
-stage_model = joblib.load('./Models/stage.pkl')
+# predictor = joblib.load('./Models/predictor.pkl')
+# risk_model = joblib.load('./Models/risk.pkl')
+# stage_model = joblib.load('./Models/stage.pkl')
+
+try:
+    predictor = joblib.load('./Models/predictor.pkl')
+    risk_model = joblib.load('./Models/risk.pkl')
+    stage_model = joblib.load('./Models/stage.pkl')
+except Exception as e:
+    st.error(f"Failed to load models: {e}")
+
 
 st.set_page_config(page_title="Lungs Cancer Prediction Dashboard", layout="wide")
 
